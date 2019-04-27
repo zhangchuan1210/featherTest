@@ -1,5 +1,5 @@
-﻿生成启动时间为 2019/4/27 16:32:28。
-     1>项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”在节点 2 上(Rebuild 个目标)。
+﻿生成启动时间为 2019/4/27 20:26:49。
+     1>项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”在节点 2 上(Build 个目标)。
      1>正在使用工具版本“15.0”进行生成。
        由于条件的计算结果为 false，已跳过目标“EnableIntermediateOutputPathMismatchWarning”；('$(RestoreProjectStyle)' == 'PackageReference')的计算结果为('' == 'PackageReference')。
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“_CheckForInvalidConfigurationAndPlatform”(目标“SetTelemetryEnvironmentVariables”依赖于它):
@@ -19,67 +19,33 @@
        由于 false 条件，已跳过任务“Warning”；( '$(EnableBaseIntermediateOutputPathMismatchWarning)' == 'true' And '$(_InitialBaseIntermediateOutputPath)' != '$(BaseIntermediateOutputPath)' And '$(BaseIntermediateOutputPath)' != '$(MSBuildProjectExtensionsPath)' )计算为( '' == 'true' And 'obj\' != 'obj\' And 'obj\' != 'C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\obj\' )。
      1>已完成在项目“featherTest.vcxproj”中生成目标“_CheckForInvalidConfigurationAndPlatform”的操作。
        已跳过目标“_CheckForInvalidConfigurationAndPlatform”。以前的生成已成功。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Cpp.DesignTime.targets”中的目标“SetTelemetryEnvironmentVariables”(目标“Rebuild”依赖于它):
+     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Cpp.DesignTime.targets”中的目标“SetTelemetryEnvironmentVariables”(目标“Build”依赖于它):
        正在使用程序集“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Build.CppTasks.Common.dll”中的“SetEnv”任务。
        任务“SetEnv”
          VSTEL_SolutionSessionID={24D20371-DB1E-4F15-83A0-94FA8DA2A059}
        已完成执行任务“SetEnv”的操作。
        任务“SetEnv”
-         VSTEL_CurrentSolutionBuildID=536088515
+         VSTEL_CurrentSolutionBuildID=550147078
        已完成执行任务“SetEnv”的操作。
        任务“SetEnv”
          VSTEL_ProjectID={59C9E097-D2C7-4055-AC6B-2E30DBEDE530}
        已完成执行任务“SetEnv”的操作。
      1>已完成在项目“featherTest.vcxproj”中生成目标“SetTelemetryEnvironmentVariables”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.BuildSteps.Targets”中的目标“_PrepareForRebuild”(目标“Rebuild”依赖于它):
-     1>已完成在项目“featherTest.vcxproj”中生成目标“_PrepareForRebuild”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“BeforeRebuild”(目标“Rebuild”依赖于它):
-     1>已完成在项目“featherTest.vcxproj”中生成目标“BeforeRebuild”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.BuildSteps.Targets”中的目标“_PrepareForClean”(目标“Clean”依赖于它):
-       正在使用程序集“Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”中的“Delete”任务。
-       任务“Delete”
-         正在删除文件“x64\Debug\featherTest.tlog\featherTest.lastbuildstate”。
-       已完成执行任务“Delete”的操作。
-     1>已完成在项目“featherTest.vcxproj”中生成目标“_PrepareForClean”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“BeforeClean”(目标“Clean”依赖于它):
-     1>已完成在项目“featherTest.vcxproj”中生成目标“BeforeClean”的操作。
-       由于条件的计算结果为 false，已跳过目标“UnmanagedUnregistration”；((('$(_AssemblyTimestampBeforeCompile)' != '$(_AssemblyTimestampAfterCompile)' or '$(RegisterForComInterop)' != 'true' or '$(OutputType)' != 'library') or
-                           ('$(_AssemblyTimestampBeforeCompile)' == '')) and
-                          Exists('@(_UnmanagedRegistrationCache)'))的计算结果为((('' != '' or '' != 'true' or 'exe' != 'library') or
-                           ('' == '')) and
-                          Exists('obj\featherTest.vcxproj.UnmanagedRegistration.cache'))。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“CoreClean”(目标“Clean”依赖于它):
-       任务“Delete”
-         文件“x64\Debug\\TempCA\featherTest.pdb”不存在。正在跳过。
-         文件“x64\Debug\\TempCA\featherTest.exe”不存在。正在跳过。
-       已完成执行任务“Delete”的操作。
-       正在使用程序集“Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”中的“ReadLinesFromFile”任务。
-       任务“ReadLinesFromFile”
-       已完成执行任务“ReadLinesFromFile”的操作。
-       正在使用程序集“Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”中的“FindUnderPath”任务。
-       任务“FindUnderPath”
-         比较路径为“C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\”。
-       已完成执行任务“FindUnderPath”的操作。
-       任务“FindUnderPath”
-         比较路径为“x64\Debug\”。
-       已完成执行任务“FindUnderPath”的操作。
-       任务“Delete”
-       已完成执行任务“Delete”的操作。
-       正在使用程序集“Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”中的“RemoveDuplicates”任务。
-       任务“RemoveDuplicates”
-       已完成执行任务“RemoveDuplicates”的操作。
-       正在使用程序集“Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”中的“MakeDir”任务。
-       任务“MakeDir”
-       已完成执行任务“MakeDir”的操作。
-       正在使用程序集“Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”中的“WriteLinesToFile”任务。
-       任务“WriteLinesToFile”
-       已完成执行任务“WriteLinesToFile”的操作。
-     1>已完成在项目“featherTest.vcxproj”中生成目标“CoreClean”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“AssignProjectConfiguration”(目标“PrepareProjectReferences”依赖于它):
+     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.BuildSteps.Targets”中的目标“_PrepareForBuild”(目标“Build”依赖于它):
+       由于 false 条件，已跳过任务“CreateItem”；('%(CustomBuild.IncludeFileToTool)'!='')计算为(''!='')。
+     1>已完成在项目“featherTest.vcxproj”中生成目标“_PrepareForBuild”的操作。
+     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets”中的目标“_PrepareForReferenceResolution”(目标“ResolveReferences”依赖于它):
+       由于 false 条件，已跳过任务“Message”；('$(_REFERENCE_DEBUG)'=='true')计算为(''=='true')。
+     1>已完成在项目“featherTest.vcxproj”中生成目标“_PrepareForReferenceResolution”的操作。
+       由于条件的计算结果为 false，已跳过目标“ComputeCrtSDKReference”；('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false')的计算结果为('featherTest.cpp;pch.cpp;testMysql.cpp'!='' and 'false'=='true' and '' != 'false')。
+     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“BeforeResolveReferences”(目标“ResolveReferences”依赖于它):
+     1>已完成在项目“featherTest.vcxproj”中生成目标“BeforeResolveReferences”的操作。
+     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“AssignProjectConfiguration”(目标“ResolveReferences”依赖于它):
        正在使用程序集“Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”中的“AssignProjectConfiguration”任务。
        任务“AssignProjectConfiguration”
        已完成执行任务“AssignProjectConfiguration”的操作。
      1>已完成在项目“featherTest.vcxproj”中生成目标“AssignProjectConfiguration”的操作。
+       已跳过目标“AssignProjectConfiguration”。以前的生成已成功。
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“_SplitProjectReferencesByFileExistence”(目标“PrepareProjectReferences”依赖于它):
        由于 false 条件，已跳过任务“ResolveNonMSBuildProjectOutput”；('$(BuildingInsideVisualStudio)'=='true' and '@(ProjectReferenceWithConfiguration)'!='')计算为('true'=='true' and ''!='')。
      1>已完成在项目“featherTest.vcxproj”中生成目标“_SplitProjectReferencesByFileExistence”的操作。
@@ -89,50 +55,8 @@
        已完成执行任务“MSBuild”的操作。
        由于 false 条件，已跳过任务“GetReferenceNearestTargetFrameworkTask”；('@(_ProjectReferenceTargetFrameworkPossibilities->Count())' != '0' and '$(ReferringTargetFrameworkForProjectReferences)' != '')计算为('0' != '0' and '.NETFramework,Version=v4.0' != '')。
      1>已完成在项目“featherTest.vcxproj”中生成目标“_GetProjectReferenceTargetFrameworkProperties”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“PrepareProjectReferences”(目标“CleanReferencedProjects”依赖于它):
+     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“PrepareProjectReferences”(目标“ResolveProjectReferences”依赖于它):
      1>已完成在项目“featherTest.vcxproj”中生成目标“PrepareProjectReferences”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“CleanReferencedProjects”(目标“Clean”依赖于它):
-       由于 false 条件，已跳过任务“MSBuild”；('$(BuildingInsideVisualStudio)' != 'true' and '$(BuildProjectReferences)' == 'true' and '@(_MSBuildProjectReferenceExistent)' != '')计算为('true' != 'true' and 'true' == 'true' and '' != '')。
-     1>已完成在项目“featherTest.vcxproj”中生成目标“CleanReferencedProjects”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“CleanPublishFolder”(目标“Clean”依赖于它):
-       由于 false 条件，已跳过任务“RemoveDir”；('$(PublishDir)'=='$(OutputPath)app.publish\' and Exists('$(PublishDir)'))计算为('C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\app.publish\'=='C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\app.publish\' and Exists('C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\app.publish\'))。
-     1>已完成在项目“featherTest.vcxproj”中生成目标“CleanPublishFolder”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“AfterClean”(目标“Clean”依赖于它):
-     1>已完成在项目“featherTest.vcxproj”中生成目标“AfterClean”的操作。
-       由于条件的计算结果为 false，已跳过目标“EntityClean”；('@(EntityDeploy)' != '')的计算结果为('' != '')。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets”中的目标“BeforeCppClean”(目标“CppClean”依赖于它):
-     1>已完成在项目“featherTest.vcxproj”中生成目标“BeforeCppClean”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets”中的目标“CoreCppClean”(目标“CppClean”依赖于它):
-       任务“MakeDir”
-       已完成执行任务“MakeDir”的操作。
-       正在使用程序集“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Build.CppTasks.Common.dll”中的“CppClean”任务。
-       任务“CppClean”
-       已完成执行任务“CppClean”的操作。
-       任务“WriteLinesToFile”
-       已完成执行任务“WriteLinesToFile”的操作。
-     1>已完成在项目“featherTest.vcxproj”中生成目标“CoreCppClean”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets”中的目标“AfterCppClean”(目标“CppClean”依赖于它):
-     1>已完成在项目“featherTest.vcxproj”中生成目标“AfterCppClean”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets”中的目标“PGInstrumentedClean”(目标“CppClean”依赖于它):
-       任务“Delete”
-       已完成执行任务“Delete”的操作。
-     1>已完成在项目“featherTest.vcxproj”中生成目标“PGInstrumentedClean”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets”中的目标“CppClean”(目标“Clean”依赖于它):
-     1>已完成在项目“featherTest.vcxproj”中生成目标“CppClean”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“Clean”(目标“Rebuild”依赖于它):
-     1>已完成在项目“featherTest.vcxproj”中生成目标“Clean”的操作。
-       已跳过目标“SetTelemetryEnvironmentVariables”。以前的生成已成功。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.BuildSteps.Targets”中的目标“_PrepareForBuild”(目标“Build”依赖于它):
-       由于 false 条件，已跳过任务“CreateItem”；('%(CustomBuild.IncludeFileToTool)'!='')计算为(''!='')。
-     1>已完成在项目“featherTest.vcxproj”中生成目标“_PrepareForBuild”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets”中的目标“_PrepareForReferenceResolution”(目标“ResolveReferences”依赖于它):
-       由于 false 条件，已跳过任务“Message”；('$(_REFERENCE_DEBUG)'=='true')计算为(''=='true')。
-     1>已完成在项目“featherTest.vcxproj”中生成目标“_PrepareForReferenceResolution”的操作。
-       由于条件的计算结果为 false，已跳过目标“ComputeCrtSDKReference”；('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false')的计算结果为('featherTest.cpp;pch.cpp'!='' and 'false'=='true' and '' != 'false')。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“BeforeResolveReferences”(目标“ResolveReferences”依赖于它):
-     1>已完成在项目“featherTest.vcxproj”中生成目标“BeforeResolveReferences”的操作。
-       已跳过目标“AssignProjectConfiguration”。以前的生成已成功。
-       已跳过目标“PrepareProjectReferences”。以前的生成已成功。
        由于条件的计算结果为 false，已跳过目标“_RemoveNameMetadataFromProjectReferenceItems”；('@(ProjectReference)'!='')的计算结果为(''!='')。
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“ResolveProjectReferences”(目标“ResolveReferences”依赖于它):
        由于 false 条件，已跳过任务“MSBuild”；('%(_MSBuildProjectReferenceExistent.BuildReference)' == 'true' and '@(ProjectReferenceWithConfiguration)' != '' and ('$(BuildingInsideVisualStudio)' == 'true' or '$(BuildProjectReferences)' != 'true') and '$(VisualStudioVersion)' != '10.0' and '@(_MSBuildProjectReferenceExistent)' != '')计算为('' == 'true' and '' != '' and ('true' == 'true' or 'true' != 'true') and '15.0' != '10.0' and '' != '')。
@@ -194,6 +118,7 @@
      1>已完成在项目“featherTest.vcxproj”中生成目标“SetCABuildNativeEnvironmentVariables”的操作。
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets”中的目标“PrepareForBuild”(目标“ResolveAssemblyReferences”依赖于它):
        由于 false 条件，已跳过任务“VCMessage”；('$(DesignTimeBuild)' != 'true' and '$(ConfigurationPlatformExists)' != 'true')计算为('' != 'true' and 'true' != 'true')。
+       正在使用程序集“Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”中的“MakeDir”任务。
        任务“MakeDir”
        已完成执行任务“MakeDir”的操作。
        由于 false 条件，已跳过任务“VCMessage”；('$(DesignTimeBuild)'!='true' and '$(WindowsAppContainer)'=='true' and '$(ConfigurationType)'!='Application' and '$(ConfigurationType)'!='DynamicLibrary' and '$(ConfigurationType)'!='StaticLibrary')计算为(''!='true' and 'false'=='true' and 'Application'!='Application' and 'Application'!='DynamicLibrary' and 'Application'!='StaticLibrary')。
@@ -211,7 +136,7 @@
        已完成执行任务“MakeDir”的操作。
      1>已完成在项目“featherTest.vcxproj”中生成目标“PrepareForBuild”的操作。
        已跳过目标“_PrepareForReferenceResolution”。以前的生成已成功。
-       由于条件的计算结果为 false，已跳过目标“ComputeCrtSDKReference”；('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false')的计算结果为('featherTest.cpp;pch.cpp'!='' and 'false'=='true' and '' != 'false')。
+       由于条件的计算结果为 false，已跳过目标“ComputeCrtSDKReference”；('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false')的计算结果为('featherTest.cpp;pch.cpp;testMysql.cpp'!='' and 'false'=='true' and '' != 'false')。
        由于条件的计算结果为 false，已跳过目标“GetInstalledSDKLocations”；('@(SDKReference)' != '')的计算结果为('' != '')。
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“ResolveSDKReferences”(目标“ResolveAssemblyReferences”依赖于它):
        由于 false 条件，已跳过任务“ResolveSDKReference”；('@(SDKReference)'!='')计算为(''!='')。
@@ -236,13 +161,15 @@
        已跳过目标“PrepareForBuild”。以前的生成已成功。
        已跳过目标“PrepareForBuild”。以前的生成已成功。
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets”中的目标“InitializeBuildStatus”(目标“Build”依赖于它):
+       正在使用程序集“Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”中的“ReadLinesFromFile”任务。
        任务“ReadLinesFromFile”
        已完成执行任务“ReadLinesFromFile”的操作。
+       正在使用程序集“Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”中的“WriteLinesToFile”任务。
        任务“WriteLinesToFile”
        已完成执行任务“WriteLinesToFile”的操作。
        正在使用程序集“Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”中的“Touch”任务。
        任务“Touch”
-         正在创建“x64\Debug\featherTest.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+         正在对“x64\Debug\featherTest.tlog\unsuccessfulbuild”执行 Touch 任务。
        已完成执行任务“Touch”的操作。
      1>已完成在项目“featherTest.vcxproj”中生成目标“InitializeBuildStatus”的操作。
        已跳过目标“PrepareProjectReferences”。以前的生成已成功。
@@ -317,6 +244,7 @@
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets”中的目标“WarnCompileDuplicatedFilename”(目标“_ClCompile”依赖于它):
        由于 false 条件，已跳过任务“VCMessage”；('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())')计算为('' != 'true' and 'featherTest.cpp' != 'featherTest.cpp' and 'x64\Debug\' == 'x64\Debug\')。
        由于 false 条件，已跳过任务“VCMessage”；('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())')计算为('' != 'true' and 'pch.cpp' != 'pch.cpp' and 'x64\Debug\' == 'x64\Debug\')。
+       由于 false 条件，已跳过任务“VCMessage”；('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())')计算为('' != 'true' and 'testMysql.cpp' != 'testMysql.cpp' and 'x64\Debug\' == 'x64\Debug\')。
      1>已完成在项目“featherTest.vcxproj”中生成目标“WarnCompileDuplicatedFilename”的操作。
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets”中的目标“FixupCLCompileOptions”(目标“_ClCompile”依赖于它):
      1>已完成在项目“featherTest.vcxproj”中生成目标“FixupCLCompileOptions”的操作。
@@ -336,43 +264,41 @@
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets”中的目标“SelectClCompile”(目标“ClCompile”依赖于它):
      1>已完成在项目“featherTest.vcxproj”中生成目标“SelectClCompile”的操作。
        由于条件的计算结果为 false，已跳过目标“GenerateTargetFrameworkMonikerAttribute”；('$(GenerateTargetFrameworkAttribute)' == 'true')的计算结果为('false' == 'true')。
-       由于条件的计算结果为 false，已跳过目标“ManagedIncrementalBuildPreProcessDependencyGraph”；('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True')的计算结果为('featherTest.cpp;pch.cpp' != '' and 'false' == 'True')。
+       由于条件的计算结果为 false，已跳过目标“ManagedIncrementalBuildPreProcessDependencyGraph”；('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True')的计算结果为('featherTest.cpp;pch.cpp;testMysql.cpp' != '' and 'false' == 'True')。
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets”中的目标“ClCompile”(目标“_ClCompile”依赖于它):
-       任务“Delete”
-         文件“x64\Debug\featherTest.pch”不存在。正在跳过。
-       已完成执行任务“Delete”的操作。
+       由于 false 条件，已跳过任务“Delete”；('%(ClCompile.DebugInformationFormat)' != '' and '%(ClCompile.DebugInformationFormat)' != 'None' and '%(ClCompile.DebugInformationFormat)' != 'OldStyle' and '%(ClCompile.ProgramDataBaseFileName)' != '' and !Exists(%(ClCompile.ProgramDataBaseFileName)))计算为('EditAndContinue' != '' and 'EditAndContinue' != 'None' and 'EditAndContinue' != 'OldStyle' and 'x64\Debug\vc141.pdb' != '' and !Exists(x64\Debug\vc141.pdb))。
        由于 false 条件，已跳过任务“CL”；('%(ClCompile.PrecompiledHeader)' == 'Create' and '%(ClCompile.ExcludedFromBuild)'!='true' and '%(ClCompile.CompilerIteration)' == '')计算为('Use' == 'Create' and ''!='true' and '' == '')。
        正在使用程序集“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Build.CppTasks.Common.dll”中的“CL”任务。
        任务“CL”
-         因缺少 PDB“x64\Debug\vc141.pdb”而强行要求对所有源文件重新编译。
-         传递给工具的环境变量为:
-           VS_UNICODE_OUTPUT=2400
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I"C:\Program Files\MySQL\MySQL Server 8.0\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Yc"pch.h" /Fp"x64\Debug\featherTest.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt pch.cpp
-         跟踪命令:
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\x64\Debug\featherTest.tlog /r C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\PCH.CPP /b MSBuildConsole_CancelEvent8b039fbb39c2447a9604cab30eaeb477  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe"  /c /I"C:\Program Files\MySQL\MySQL Server 8.0\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Yc"pch.h" /Fp"x64\Debug\featherTest.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt pch.cpp
-         pch.cpp
-       已完成执行任务“CL”的操作。
-       任务“CL”
          读取跟踪日志:
          	x64\Debug\featherTest.tlog\CL.read.1.tlog
-         C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\FEATHERTEST.CPP 的输出:
+         C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\PCH.CPP 的输出:
+         	C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\PCH.OBJ
+         	C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\FEATHERTEST.PCH
+         所有输出均为最新。
+       已完成执行任务“CL”的操作。
+       任务“CL”
+         使用从以下项生成的缓存输入依赖关系表:
+         	C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\x64\Debug\featherTest.tlog\CL.read.1.tlog
+         C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\FEATHERTEST.CPP|C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\TESTMYSQL.CPP 的输出:
          	C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\FEATHERTEST.OBJ
+         	C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\TESTMYSQL.OBJ
          将编译 featherTest.cpp，因为未能在跟踪日志中找到它。
          C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\FEATHERTEST.CPP 的输出:
          	C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\FEATHERTEST.OBJ
          写入跟踪日志:
          	x64\Debug\featherTest.tlog\CL.write.1.tlog
          传递给工具的环境变量为:
-           VS_UNICODE_OUTPUT=2492
+           VS_UNICODE_OUTPUT=1500
          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I"C:\Program Files\MySQL\MySQL Server 8.0\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Yu"pch.h" /Fp"x64\Debug\featherTest.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt featherTest.cpp
          跟踪命令:
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\x64\Debug\featherTest.tlog /r C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\FEATHERTEST.CPP /b MSBuildConsole_CancelEventc2263c369209493a8530e1993f2ac8a8  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe"  /c /I"C:\Program Files\MySQL\MySQL Server 8.0\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Yu"pch.h" /Fp"x64\Debug\featherTest.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt featherTest.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\x64\Debug\featherTest.tlog /r C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\FEATHERTEST.CPP /b MSBuildConsole_CancelEvent2b8d3a266f81478e93968ea42d516a17  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe"  /c /I"C:\Program Files\MySQL\MySQL Server 8.0\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Yu"pch.h" /Fp"x64\Debug\featherTest.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt featherTest.cpp
          featherTest.cpp
        已完成执行任务“CL”的操作。
        由于 false 条件，已跳过任务“CL”；('%(ClCompile.PrecompiledHeader)' != 'Create' and '%(ClCompile.ExcludedFromBuild)'!='true' and '%(ClCompile.CompilerIteration)' == '' and @(ClCompile) != '')计算为('Create' != 'Create' and ''!='true' and '' == '' and pch.cpp != '')。
      1>已完成在项目“featherTest.vcxproj”中生成目标“ClCompile”的操作。
        由于条件的计算结果为 false，已跳过目标“RunSelectedFileNativeCodeAnalysis”；('$(RunCppAnalysis)'=='true' and '$(SelectedFiles)'!='')的计算结果为('false'=='true' and ''!='')。
-       由于条件的计算结果为 false，已跳过目标“ManagedIncrementalBuildPostProcessDependencyGraph”；('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True')的计算结果为('featherTest.cpp;pch.cpp' != '' and 'false' == 'True')。
+       由于条件的计算结果为 false，已跳过目标“ManagedIncrementalBuildPostProcessDependencyGraph”；('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True')的计算结果为('featherTest.cpp;pch.cpp;testMysql.cpp' != '' and 'false' == 'True')。
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets”中的目标“AfterClCompile”(目标“_ClCompile”依赖于它):
      1>已完成在项目“featherTest.vcxproj”中生成目标“AfterClCompile”的操作。
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets”中的目标“_ClCompile”(目标“_BuildCompileAction”依赖于它):
@@ -482,13 +408,51 @@
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets”中的目标“Link”(目标“_Link”依赖于它):
        正在使用程序集“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Build.CppTasks.Common.dll”中的“Link”任务。
        任务“Link”
+         写入跟踪日志:
+         	x64\Debug\featherTest.tlog\link.write.1.tlog
+         读取跟踪日志:
+         	x64\Debug\featherTest.tlog\link.read.1.tlog
+         C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\FEATHERTEST.OBJ|C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\PCH.OBJ|C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\TESTMYSQL.OBJ 的输出:
+         	C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\X64\DEBUG\FEATHERTEST.ILK
+         	C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\X64\DEBUG\FEATHERTEST.EXE
+         	C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\X64\DEBUG\FEATHERTEST.PDB
+         C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\FEATHERTEST.OBJ|C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\PCH.OBJ|C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\TESTMYSQL.OBJ 的输入:
+         	C:\PROGRAM FILES\MYSQL\MYSQL SERVER 8.0\LIB\LIBMYSQL.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\KERNEL32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\USER32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\GDI32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\WINSPOOL.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\COMDLG32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\ADVAPI32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\SHELL32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\OLE32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\OLEAUT32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\UUID.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\ODBC32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\ODBCCP32.LIB
+         	C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\FEATHERTEST.OBJ
+         	C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\PCH.OBJ
+         	C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\TESTMYSQL.OBJ
+         	C:\WINDOWS\GLOBALIZATION\SORTING\SORTDEFAULT.NLS
+         	C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO\2017\COMMUNITY\VC\TOOLS\MSVC\14.16.27023\LIB\X64\MSVCPRTD.LIB
+         	C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO\2017\COMMUNITY\VC\TOOLS\MSVC\14.16.27023\LIB\X64\MSVCRTD.LIB
+         	C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO\2017\COMMUNITY\VC\TOOLS\MSVC\14.16.27023\LIB\X64\OLDNAMES.LIB
+         	C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO\2017\COMMUNITY\VC\TOOLS\MSVC\14.16.27023\LIB\X64\VCRUNTIMED.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UCRT\X64\UCRTD.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\BIN\10.0.17763.0\X86\RC.EXE
+         	C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO\2017\COMMUNITY\VC\TOOLS\MSVC\14.16.27023\BIN\HOSTX86\X86\CVTRES.EXE
+         	C:\WINDOWS\SYSTEM32\TZRES.DLL
+         	C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO\2017\COMMUNITY\VC\TOOLS\MSVC\14.16.27023\BIN\HOSTX86\X64\VCTIP.EXE
+         需要编译源: 输入 C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\FEATHERTEST.OBJ 比输出 C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\X64\DEBUG\FEATHERTEST.EXE 新。
          传递给工具的环境变量为:
-           VS_UNICODE_OUTPUT=1204
+           VS_UNICODE_OUTPUT=1584
          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\MySQL\MySQL Server 8.0\lib" libmysql.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.lib" /MACHINE:X64 x64\Debug\featherTest.obj
          x64\Debug\pch.obj
+         x64\Debug\testMysql.obj
          跟踪命令:
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\x64\Debug\featherTest.tlog /r "C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\FEATHERTEST.OBJ|C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\PCH.OBJ" /b MSBuildConsole_CancelEvent92824ff6ce714ac9a1cdb50892c24695  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\MySQL\MySQL Server 8.0\lib" libmysql.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.lib" /MACHINE:X64 x64\Debug\featherTest.obj
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\x64\Debug\featherTest.tlog /r "C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\FEATHERTEST.OBJ|C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\PCH.OBJ|C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\TESTMYSQL.OBJ" /b MSBuildConsole_CancelEvent962b149bc29846b0870371f3118f743c  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\MySQL\MySQL Server 8.0\lib" libmysql.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.lib" /MACHINE:X64 x64\Debug\featherTest.obj
          x64\Debug\pch.obj
+         x64\Debug\testMysql.obj
        已完成执行任务“Link”的操作。
        任务“Message”
          featherTest.vcxproj -> C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.exe
@@ -609,6 +573,7 @@
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.BuildSteps.Targets”中的目标“AfterBuild”(目标“Build”依赖于它):
      1>已完成在项目“featherTest.vcxproj”中生成目标“AfterBuild”的操作。
      1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets”中的目标“FinalizeBuildStatus”(目标“Build”依赖于它):
+       正在使用程序集“Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”中的“Delete”任务。
        任务“Delete”
          正在删除文件“x64\Debug\featherTest.tlog\unsuccessfulbuild”。
        已完成执行任务“Delete”的操作。
@@ -616,17 +581,14 @@
          正在对“x64\Debug\featherTest.tlog\featherTest.lastbuildstate”执行 Touch 任务。
        已完成执行任务“Touch”的操作。
      1>已完成在项目“featherTest.vcxproj”中生成目标“FinalizeBuildStatus”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.BuildSteps.Targets”中的目标“Build”(目标“Rebuild”依赖于它):
-     1>已完成在项目“featherTest.vcxproj”中生成目标“Build”的操作。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets”中的目标“AfterRebuild”(目标“Rebuild”依赖于它):
-     1>已完成在项目“featherTest.vcxproj”中生成目标“AfterRebuild”的操作。
        已跳过目标“_CheckForInvalidConfigurationAndPlatform”。以前的生成已成功。
-     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.BuildSteps.Targets”中的目标“Rebuild”(入口点):
-     1>已完成在项目“featherTest.vcxproj”中生成目标“Rebuild”的操作。
-     1>已完成生成项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”(Rebuild 个目标)的操作。
+       已跳过目标“_CheckForInvalidConfigurationAndPlatform”。以前的生成已成功。
+     1>来自项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”的文件“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.BuildSteps.Targets”中的目标“Build”(入口点):
+     1>已完成在项目“featherTest.vcxproj”中生成目标“Build”的操作。
+     1>已完成生成项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”(Build 个目标)的操作。
 
 已成功生成。
     0 个警告
     0 个错误
 
-已用时间 00:00:13.01
+已用时间 00:00:23.33
