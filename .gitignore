@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs/featherTest/v15
+/featherTest/featherTest.vcxproj
+/featherTest/featherTest.vcxproj.filters
+/featherTest/featherTest.vcxproj.user
