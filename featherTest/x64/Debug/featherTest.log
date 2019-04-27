@@ -1,4 +1,4 @@
-﻿生成启动时间为 2019/4/27 15:58:50。
+﻿生成启动时间为 2019/4/27 16:32:28。
      1>项目“C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\featherTest.vcxproj”在节点 2 上(Rebuild 个目标)。
      1>正在使用工具版本“15.0”进行生成。
        由于条件的计算结果为 false，已跳过目标“EnableIntermediateOutputPathMismatchWarning”；('$(RestoreProjectStyle)' == 'PackageReference')的计算结果为('' == 'PackageReference')。
@@ -25,7 +25,7 @@
          VSTEL_SolutionSessionID={24D20371-DB1E-4F15-83A0-94FA8DA2A059}
        已完成执行任务“SetEnv”的操作。
        任务“SetEnv”
-         VSTEL_CurrentSolutionBuildID=534070484
+         VSTEL_CurrentSolutionBuildID=536088515
        已完成执行任务“SetEnv”的操作。
        任务“SetEnv”
          VSTEL_ProjectID={59C9E097-D2C7-4055-AC6B-2E30DBEDE530}
@@ -242,7 +242,7 @@
        已完成执行任务“WriteLinesToFile”的操作。
        正在使用程序集“Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”中的“Touch”任务。
        任务“Touch”
-         正在对“x64\Debug\featherTest.tlog\unsuccessfulbuild”执行 Touch 任务。
+         正在创建“x64\Debug\featherTest.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        已完成执行任务“Touch”的操作。
      1>已完成在项目“featherTest.vcxproj”中生成目标“InitializeBuildStatus”的操作。
        已跳过目标“PrepareProjectReferences”。以前的生成已成功。
@@ -346,10 +346,10 @@
        任务“CL”
          因缺少 PDB“x64\Debug\vc141.pdb”而强行要求对所有源文件重新编译。
          传递给工具的环境变量为:
-           VS_UNICODE_OUTPUT=956
+           VS_UNICODE_OUTPUT=2400
          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I"C:\Program Files\MySQL\MySQL Server 8.0\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Yc"pch.h" /Fp"x64\Debug\featherTest.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt pch.cpp
          跟踪命令:
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\x64\Debug\featherTest.tlog /r C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\PCH.CPP /b MSBuildConsole_CancelEventf3fa6535d6d4463fb884a58719b3f33c  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe"  /c /I"C:\Program Files\MySQL\MySQL Server 8.0\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Yc"pch.h" /Fp"x64\Debug\featherTest.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt pch.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\x64\Debug\featherTest.tlog /r C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\PCH.CPP /b MSBuildConsole_CancelEvent8b039fbb39c2447a9604cab30eaeb477  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe"  /c /I"C:\Program Files\MySQL\MySQL Server 8.0\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Yc"pch.h" /Fp"x64\Debug\featherTest.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt pch.cpp
          pch.cpp
        已完成执行任务“CL”的操作。
        任务“CL”
@@ -363,10 +363,10 @@
          写入跟踪日志:
          	x64\Debug\featherTest.tlog\CL.write.1.tlog
          传递给工具的环境变量为:
-           VS_UNICODE_OUTPUT=1784
+           VS_UNICODE_OUTPUT=2492
          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I"C:\Program Files\MySQL\MySQL Server 8.0\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Yu"pch.h" /Fp"x64\Debug\featherTest.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt featherTest.cpp
          跟踪命令:
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\x64\Debug\featherTest.tlog /r C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\FEATHERTEST.CPP /b MSBuildConsole_CancelEvent266e2bc4503f420d86b47524c1dd1b82  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe"  /c /I"C:\Program Files\MySQL\MySQL Server 8.0\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Yu"pch.h" /Fp"x64\Debug\featherTest.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt featherTest.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\x64\Debug\featherTest.tlog /r C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\FEATHERTEST.CPP /b MSBuildConsole_CancelEventc2263c369209493a8530e1993f2ac8a8  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe"  /c /I"C:\Program Files\MySQL\MySQL Server 8.0\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Yu"pch.h" /Fp"x64\Debug\featherTest.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt featherTest.cpp
          featherTest.cpp
        已完成执行任务“CL”的操作。
        由于 false 条件，已跳过任务“CL”；('%(ClCompile.PrecompiledHeader)' != 'Create' and '%(ClCompile.ExcludedFromBuild)'!='true' and '%(ClCompile.CompilerIteration)' == '' and @(ClCompile) != '')计算为('Create' != 'Create' and ''!='true' and '' == '' and pch.cpp != '')。
@@ -483,11 +483,11 @@
        正在使用程序集“C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Build.CppTasks.Common.dll”中的“Link”任务。
        任务“Link”
          传递给工具的环境变量为:
-           VS_UNICODE_OUTPUT=1440
+           VS_UNICODE_OUTPUT=1204
          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\MySQL\MySQL Server 8.0\lib" libmysql.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.lib" /MACHINE:X64 x64\Debug\featherTest.obj
          x64\Debug\pch.obj
          跟踪命令:
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\x64\Debug\featherTest.tlog /r "C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\FEATHERTEST.OBJ|C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\PCH.OBJ" /b MSBuildConsole_CancelEventc317a95fa4204a8d853af60122ed4205  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\MySQL\MySQL Server 8.0\lib" libmysql.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.lib" /MACHINE:X64 x64\Debug\featherTest.obj
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\chuan\source\repos\c++\day01\featherTest\featherTest\x64\Debug\featherTest.tlog /r "C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\FEATHERTEST.OBJ|C:\USERS\CHUAN\SOURCE\REPOS\C++\DAY01\FEATHERTEST\FEATHERTEST\X64\DEBUG\PCH.OBJ" /b MSBuildConsole_CancelEvent92824ff6ce714ac9a1cdb50892c24695  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\MySQL\MySQL Server 8.0\lib" libmysql.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\chuan\source\repos\c++\day01\featherTest\x64\Debug\featherTest.lib" /MACHINE:X64 x64\Debug\featherTest.obj
          x64\Debug\pch.obj
        已完成执行任务“Link”的操作。
        任务“Message”
@@ -629,4 +629,4 @@
     0 个警告
     0 个错误
 
-已用时间 00:00:10.38
+已用时间 00:00:13.01
