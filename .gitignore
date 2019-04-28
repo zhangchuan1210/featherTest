@@ -9,3 +9,7 @@
 /Debug
 /featherTest/Debug/featherTest.tlog
 /featherTest/Debug
+/iguana/.gitignore
+/iguana/CMakeLists.txt
+/iguana/LICENSE
+/iguana/.vs
