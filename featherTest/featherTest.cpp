@@ -187,130 +187,130 @@ constexpr size_t size(T(&)[N]) { return N; }
 //	}
 //}
 
-TEST_CASE(orm_connect) {
-	dbng<mysql> mysql;
-	/*dbng<sqlite> sqlite;
-	dbng<postgresql> postgres;*/
-
-	TEST_REQUIRE(mysql.connect(ip, "root", "zc142500", "testdb"));
-	/*TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
-	TEST_REQUIRE(sqlite.connect("test.db"));*/
-
-	/*TEST_REQUIRE(mysql.disconnect());
-	TEST_REQUIRE(postgres.disconnect());
-	TEST_REQUIRE(sqlite.disconnect());*/
-
-	/*int timeout = 5;
-	TEST_REQUIRE(mysql.connect(ip, "root", "zc142500", "testdb", timeout));
-	TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb", timeout));
-	*/
-}
+//TEST_CASE(orm_connect) {
+//	dbng<mysql> mysql;
+//	/*dbng<sqlite> sqlite;
+//	dbng<postgresql> postgres;*/
+//
+//	TEST_REQUIRE(mysql.connect(ip, "root", "zc142500", "testdb"));
+//	/*TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
+//	TEST_REQUIRE(sqlite.connect("test.db"));*/
+//
+//	/*TEST_REQUIRE(mysql.disconnect());
+//	TEST_REQUIRE(postgres.disconnect());
+//	TEST_REQUIRE(sqlite.disconnect());*/
+//
+//	/*int timeout = 5;
+//	TEST_REQUIRE(mysql.connect(ip, "root", "zc142500", "testdb", timeout));
+//	TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb", timeout));
+//	*/
+//}
 
 //TEST_CASE(orm_create_table) {
 //	dbng<mysql> mysql;
 //	/*dbng<sqlite> sqlite;
 //	dbng<postgresql> postgres;
 //*/
-//	TEST_REQUIRE(mysql.connect(ip, "root", "12345", "testdb"));
+//	TEST_REQUIRE(mysql.connect(ip, "root", "zc142500", "testdb"));
 //	//TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
 //	//TEST_REQUIRE(sqlite.connect("test.db"));
 //
 //	ormpp_key key{ "id" };
-//	ormpp_not_null not_null{ {"id", "age"} };
+//	/*ormpp_not_null not_null{ {"id", "age"} };
 //	ormpp_auto_key auto_key{ "id" };
-//
+//*/
 //	TEST_REQUIRE(mysql.create_datatable<person>());
 //	/*TEST_REQUIRE(postgres.create_datatable<person>());
 //	TEST_REQUIRE(sqlite.create_datatable<person>());*/
 //
-//	TEST_REQUIRE(mysql.create_datatable<person>(key));
+//	//TEST_REQUIRE(mysql.create_datatable<person>(key));
 //	/*TEST_REQUIRE(postgres.create_datatable<person>(key));
 //	TEST_REQUIRE(sqlite.create_datatable<person>(key));*/
 //
-//	TEST_REQUIRE(mysql.create_datatable<person>(not_null));
+//	//TEST_REQUIRE(mysql.create_datatable<person>(not_null));
 //	/*TEST_REQUIRE(postgres.create_datatable<person>(not_null));
 //	TEST_REQUIRE(sqlite.create_datatable<person>(not_null));*/
 //
-//	TEST_REQUIRE(mysql.create_datatable<person>(key, not_null));
+//	//TEST_REQUIRE(mysql.create_datatable<person>(key, not_null));
 //	//TEST_REQUIRE(postgres.create_datatable<person>(key, not_null));
 //	//TEST_REQUIRE(sqlite.create_datatable<person>(key, not_null));
 //
-//	TEST_REQUIRE(mysql.create_datatable<person>(not_null, key));
+//	//TEST_REQUIRE(mysql.create_datatable<person>(not_null, key));
 //	/*TEST_REQUIRE(postgres.create_datatable<person>(not_null, key));
 //	TEST_REQUIRE(sqlite.create_datatable<person>(not_null, key));
 //*/
-//	TEST_REQUIRE(mysql.create_datatable<person>(auto_key));
+//	//TEST_REQUIRE(mysql.create_datatable<person>(auto_key));
 //	/*TEST_REQUIRE(postgres.create_datatable<person>(auto_key));
 //	TEST_REQUIRE(sqlite.create_datatable<person>(auto_key));
 //*/
-//	TEST_REQUIRE(mysql.create_datatable<person>(auto_key, not_null));
+//	//TEST_REQUIRE(mysql.create_datatable<person>(auto_key, not_null));
 //	/*TEST_REQUIRE(postgres.create_datatable<person>(auto_key, not_null));
 //	TEST_REQUIRE(sqlite.create_datatable<person>(auto_key, not_null));
 //*/
-//	TEST_REQUIRE(mysql.create_datatable<person>(not_null, auto_key));
+//	//TEST_REQUIRE(mysql.create_datatable<person>(not_null, auto_key));
 //	/*TEST_REQUIRE(postgres.create_datatable<person>(not_null, auto_key));
 //	TEST_REQUIRE(sqlite.create_datatable<person>(not_null, auto_key));*/
 //}
-//
-//TEST_CASE(orm_insert_query) {
-//	dbng<mysql> mysql;
-//	/*dbng<sqlite> sqlite;
-//	dbng<postgresql> postgres;*/
-//
-//	TEST_REQUIRE(mysql.connect(ip, "root", "12345", "testdb"));
-//	/*TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
-//	TEST_REQUIRE(sqlite.connect("test.db"));
-//*/
-//	auto vv0 = mysql.query(FID(simple::id), "<", "5");
-//	auto vv = mysql.query(FID(simple::id), "<", 5);
-//	auto vv3 = mysql.query(FID(person::name), "<", "5");
-//	auto vv5 = mysql.query(FID(person::name), "<", 5);
-//	auto r = mysql.delete_records(FID(simple::id), "=", 3);
-//	/*auto vv1 = postgres.query(FID(simple::id), "<", "5");
-//	auto vv2 = sqlite.query(FID(simple::id), "<", "5");
-//*/
-//	ormpp_key key{ "code" };
-//	ormpp_not_null not_null{ {"code", "age"} };
-//	ormpp_auto_key auto_key{ "code" };
-//
-//	student s = { 1, "tom", 0, 19, 1.5, "room2" };
-//	student s1 = { 1, "jack", 1, 20, 2.5, "room3" };
-//	student s2 = { 1, "mke", 2, 21, 3.5, "room4" };
-//	std::vector<student> v{ s1, s2 };
-//
-//	//auto key
-//	{
-//		TEST_REQUIRE(mysql.create_datatable<student>(auto_key, not_null));
-//		/*TEST_REQUIRE(postgres.create_datatable<student>(auto_key, not_null));
-//		TEST_REQUIRE(sqlite.create_datatable<student>(auto_key));
-//*/
-//		TEST_CHECK(mysql.insert(s) == 1);
-//		auto result1 = mysql.query<student>();
-//		TEST_CHECK(result1.size() == 1);
-//		TEST_CHECK(mysql.insert(s) == 1);
-//
-//		//TEST_CHECK(postgres.insert(s) == 1);
-//		//auto result2 = postgres.query<student>();
-//		//TEST_CHECK(result2.size() == 1);
-//
-//		//TEST_CHECK(sqlite.insert(s) == 1);
-//		//auto result3 = sqlite.query<student>();
-//		//TEST_CHECK(result3.size() == 1);
-//
-//		TEST_CHECK(mysql.insert(v) == 2);
-//		auto result4 = mysql.query<student>();
-//		TEST_CHECK(result4.size() == 4);
-//
-//	/*	TEST_CHECK(postgres.insert(v) == 2);
-//		auto result5 = mysql.query<student>();
-//		TEST_CHECK(result5.size() == 4);
-//
-//		TEST_CHECK(sqlite.insert(v) == 2);
-//		auto result6 = mysql.query<student>();
-//		TEST_CHECK(result6.size() == 4);*/
-//	}
-//
-//	//key
+
+TEST_CASE(orm_insert_query) {
+	dbng<mysql> mysql;
+	/*dbng<sqlite> sqlite;
+	dbng<postgresql> postgres;*/
+
+	TEST_REQUIRE(mysql.connect(ip, "root", "zc142500", "testdb"));
+	/*TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
+	TEST_REQUIRE(sqlite.connect("test.db"));
+*/
+	/*auto vv0 = mysql.query(FID(simple::id), "<", "5");
+	auto vv = mysql.query(FID(simple::id), "<", 5);*/
+	auto vv3 = mysql.query(FID(person::name), "<", "5");
+	auto vv5 = mysql.query(FID(person::name), "<", 5);
+	/*auto r = mysql.delete_records(FID(simple::id), "=", 3);
+	auto vv1 = postgres.query(FID(simple::id), "<", "5");
+	auto vv2 = sqlite.query(FID(simple::id), "<", "5");
+*/
+	ormpp_key key{ "code" };
+	ormpp_not_null not_null{ {"code", "age"} };
+	ormpp_auto_key auto_key{ "code" };
+
+	student s = { 5, "tom", 0, 19, 1.5, "room2" };
+	student s1 = { 6, "jack", 1, 20, 2.5, "room3" };
+	student s2 = { 8, "mke", 2, 21, 3.5, "room4" };
+	std::vector<student> v{ s1, s2 };
+
+	//auto key
+	{
+		TEST_REQUIRE(mysql.create_datatable<student>(auto_key, not_null));
+		/*TEST_REQUIRE(postgres.create_datatable<student>(auto_key, not_null));
+		TEST_REQUIRE(sqlite.create_datatable<student>(auto_key));
+*/
+		TEST_CHECK(mysql.insert(s) == 1);
+		auto result1 = mysql.query<student>();
+		TEST_CHECK(result1.size() == 1);
+		TEST_CHECK(mysql.insert(s) == 1);
+
+		//TEST_CHECK(postgres.insert(s) == 1);
+		//auto result2 = postgres.query<student>();
+		//TEST_CHECK(result2.size() == 1);
+
+		//TEST_CHECK(sqlite.insert(s) == 1);
+		//auto result3 = sqlite.query<student>();
+		//TEST_CHECK(result3.size() == 1);
+
+		TEST_CHECK(mysql.insert(v) == 2);
+		auto result4 = mysql.query<student>();
+		TEST_CHECK(result4.size() == 4);
+
+	/*	TEST_CHECK(postgres.insert(v) == 2);
+		auto result5 = mysql.query<student>();
+		TEST_CHECK(result5.size() == 4);
+
+		TEST_CHECK(sqlite.insert(v) == 2);
+		auto result6 = mysql.query<student>();
+		TEST_CHECK(result6.size() == 4);*/
+	}
+
+	//key
 //	{
 //		TEST_REQUIRE(mysql.create_datatable<student>(key, not_null));
 //		/*TEST_REQUIRE(postgres.create_datatable<student>(key, not_null));
@@ -346,9 +346,9 @@ TEST_CASE(orm_connect) {
 //		auto result6 = mysql.query<student>();
 //		TEST_CHECK(result6.size() == 2);*/
 //	}
-//
-//}
-//
+
+}
+
 //TEST_CASE(orm_update) {
 //	dbng<mysql> mysql;
 //	/*dbng<sqlite> sqlite;
