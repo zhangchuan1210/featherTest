@@ -1,736 +1,371 @@
-﻿// featherTest.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//
-
-
-#ifdef _MSC_VER
-#ifdef _WIN64
-#include <WinSock2.h>
-#elif _WIN32
-#include <winsock.h>
-#endif
-
-#endif
-#include "pch.h"
+﻿#include"pch.h"
 #include <iostream>
-#include <iostream>
-#include <thread>
-#include "mysql.hpp"
-//#include "sqlite.hpp"
-//#include "postgresql.hpp"
-#include "dbng.hpp"
-#include "connection_pool.hpp"
-#include "ormpp_cfg.hpp"
+#include "../cinatra/http_server.hpp"
+#include "../cinatra/cookie.hpp"
+#include "../cinatra/session_manager.hpp"
+using namespace cinatra;
 
-#define TEST_MAIN
-#include "unit_test.hpp"
-
-struct test_tb {
-	int id;
-	char name[12];
-};
-REFLECTION(test_tb, id, name);
-
-struct person
+struct log_t
 {
-	int id;
-	std::string name;
-	int age;
+	bool before(const request& req, response& res) {
+		std::cout << "before log" << std::endl;
+		return true;
+	}
+
+	bool after(const request& req, response& res) {
+		std::cout << "after log" << std::endl;
+		res.add_header("aaaa", "bbcc");
+		return true;
+	}
 };
-REFLECTION(person, id, name, age)
 
-struct student {
-	int code;//key
-	std::string name;
-	char sex;
-	int age;
-	double dm;
-	std::string classroom;
+struct check {
+	bool before(const request& req, response& res) {
+		/*std::cout << "before check" << std::endl;
+		if (req.get_header_value("name").empty()) {
+			res.set_status_and_content(status_type::bad_request);
+			return false;
+		}*/
+
+		return true;
+	}
+
+	bool after(const request& req, response& res) {
+		std::cout << "after check" << std::endl;
+
+		return true;
+	}
 };
-REFLECTION(student, code, name, sex, age, dm, classroom)
 
-struct simple {
-	int id;
-	double code;
-	int age;
-};
-REFLECTION(simple, id, code, age);
+int main() {
+	nanolog::initialize(nanolog::GuaranteedLogger(), "/tmp/", "nanolog", 1);
+	const int max_thread_num = 4;
+	http_server server(max_thread_num);
+#ifdef CINATRA_ENABLE_SSL
+	server.init_ssl_context(true, [](auto, auto) { return "123456"; }, "server.crt", "server.key", "dh1024.pem");
+	bool r = server.listen("0.0.0.0", "https");
+#else
+	bool r = server.listen("0.0.0.0", "8080");
+#endif
+	if (!r) {
+		LOG_INFO << "listen failed";
+		return -1;
+	}
 
-using namespace ormpp;
-const char* ip = "127.0.0.1"; //your database ip
+	server.set_http_handler<GET, POST>("/", [](const request& req, response& res) {
+		res.set_status_and_content(status_type::ok, "hello world");
+	});
 
-//TEST_CASE(mysql_performance){
-//    dbng<mysql> mysql;
-//
-//    TEST_REQUIRE(mysql.connect(ip, "root", "12345", "testdb"));
-//    TEST_REQUIRE(mysql.execute("DROP TABLE IF EXISTS student"));
-//
-//    ormpp_auto_increment_key auto_key{"code"};
-//    TEST_REQUIRE(mysql.create_datatable<student>(auto_key));
-//
-//    using namespace std::chrono;
-//    auto m_begin = high_resolution_clock::now();
-//    for (int i = 0; i < 10000; ++i) {
-//        mysql.insert(student{i, "tom", 0, i, 1.5, "classroom1"});
-//    }
-//    auto s = duration_cast<duration<double>>(high_resolution_clock::now() - m_begin).count();
-//    std::cout<<s<<'\n';
-//
-//    m_begin = high_resolution_clock::now();
-//    std::vector<student> v;
-//    for (int i = 0; i < 10000; ++i) {
-//        v.push_back(student{i, "tom", 0, i, 1.5, "classroom1"});
-//    }
-//    mysql.insert(v);
-//    s = duration_cast<duration<double>>(high_resolution_clock::now() - m_begin).count();
-//    std::cout<<s<<'\n';
-//
-//    m_begin = high_resolution_clock::now();
-//    for (int j = 0; j < 100; ++j) {
-//        TEST_REQUIRE(!mysql.query<student>("limit 1000").empty());
-//    }
-//    s = duration_cast<duration<double>>(high_resolution_clock::now() - m_begin).count();
-//    std::cout<<s<<'\n';
-//}
-
-template<class T, size_t N>
-constexpr size_t size(T(&)[N]) { return N; }
-
-//TEST_CASE(mysql_pool) {
-//		dbng<sqlite> sqlite;
-//		sqlite.connect("testdb");
-//		sqlite.create_datatable<test_tb>(ormpp_unique{ "name" });
-//		test_tb tb{ 1, "aa" };
-//		sqlite.insert(tb);
-//		auto vt = sqlite.query<test_tb>();
-//		auto vt1 = sqlite.query<std::tuple<test_tb>>("select * from test_tb");
-//	    auto& pool = connection_pool<dbng<mysql>>::instance();
-//	    try {
-//	        pool.init(1, ip, "root", "zc12345", "testdb", 2);
-//	    }catch(const std::exception& e){
-//	        std::cout<<e.what()<<std::endl;
-//	        return;
-//	    }
-//		auto con = pool.get();
-//		auto v = con->query<std::tuple<test_tb>>("select * from test_tb");
-//		con->create_datatable<test_tb>(ormpp_unique{"name"});
-//	    for (int i = 0; i < 10; ++i) {
-//	        auto conn = pool.get();
-//	//        conn_guard guard(conn);
-//	        if(conn== nullptr){
-//	            std::cout<<"no available conneciton"<<std::endl;
-//	            break;
-//	        }
-//	
-//	        bool r = conn->create_datatable<person>();
-//	    }
-//
-//		
-//}
-
-//TEST_CASE(test_ormpp_cfg) {
-//	ormpp_cfg cfg{};
-//	bool ret = config_manager::from_file(cfg, "./cfg/ormpp.cfg");
-//	if (!ret) {
-//		return;
-//	}
-//
-//	auto& pool = connection_pool<dbng<mysql>>::instance();
-//	try {
-//		pool.init(cfg.db_conn_num, cfg.db_ip.data(), cfg.user_name.data(), cfg.pwd.data(), cfg.db_name.data(), cfg.timeout);
-//	}
-//	catch (const std::exception& e) {
-//		std::cout << e.what() << std::endl;
-//		return;
-//	}
-//
-//	auto conn1 = pool.get();
-//	auto result1 = conn1->query<student>();
-//	std::cout << result1.size() << std::endl;
-//}
-
-//TEST_CASE(postgres_pool) {
-//	auto& pool = connection_pool<dbng<postgresql>>::instance();
-//	try {
-//		pool.init(3, ip, "root", "12345", "testdb", 2);
-//		pool.init(7, ip, "root", "12345", "testdb", 2);
-//	}
-//	catch (const std::exception& e) {
-//		std::cout << e.what() << std::endl;
-//		return;
-//	}
-//
-//	auto conn1 = pool.get();
-//	auto conn2 = pool.get();
-//	auto conn3 = pool.get();
-//
-//	std::thread thd([conn2, &pool] {
-//		std::this_thread::sleep_for(std::chrono::seconds(15));
-//		pool.return_back(conn2);
+//	server.set_http_handler<GET, POST>("/login", [](const request& req, response& res) {
+//		auto session = res.start_session();
+//		session->set_data("userid", std::string("1"));
+//		session->set_max_age(-1);
+//		res.set_status_and_content(status_type::ok, "login");
 //	});
 //
-//	auto conn4 = pool.get();  //10s later, timeout
-//	TEST_CHECK(conn4 == nullptr);
-//	auto conn5 = pool.get();
-//	TEST_CHECK(conn5 != nullptr);
-//
-//	thd.join();
-//
-//	for (int i = 0; i < 10; ++i) {
-//		auto conn = pool.get();
-//		//conn_guard guard(conn);
-//		if (conn == nullptr) {
-//			std::cout << "no available conneciton" << std::endl;
-//			continue;
+//	server.set_http_handler<GET, POST>("/islogin", [](const request& req, response& res) {
+//		auto ptr = req.get_session();
+//		auto session = ptr.lock();
+//		if (session == nullptr || session->get_data<std::string>("userid") != "1") {
+//			res.set_status_and_content(status_type::ok, "没有登录", res_content_type::string);
+//			return;
 //		}
+//		res.set_status_and_content(status_type::ok, "已经登录", res_content_type::string);
+//	});
 //
-//		bool r = conn->create_datatable<person>();
-//	}
-//}
-
-//TEST_CASE(orm_connect) {
-//	dbng<mysql> mysql;
-//	/*dbng<sqlite> sqlite;
-//	dbng<postgresql> postgres;*/
+//	server.set_http_handler<GET, POST>("/html", [](const request& req, response& res) {
+//		inja::json json;
+//		json["test_text"] = "hello,world";
+//		json["header_text"] = "你好 cinatra";
+//		res.render_html("./www/test.html", json);
+//		/*
+//		 * ---------------------test.html---------------------------
+//		 * <html>
+//	<head>
+//	  <meta charset="utf-8">
+//	</head>
+//	<body>
+//		{% include "./header/header.html" %}
+//			<h1>{{test_text}}</h1>
+//	</body>
+//</html>
 //
-//	TEST_REQUIRE(mysql.connect(ip, "root", "zc142500", "testdb"));
-//	/*TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
-//	TEST_REQUIRE(sqlite.connect("test.db"));*/
-//
-//	/*TEST_REQUIRE(mysql.disconnect());
-//	TEST_REQUIRE(postgres.disconnect());
-//	TEST_REQUIRE(sqlite.disconnect());*/
-//
-//	/*int timeout = 5;
-//	TEST_REQUIRE(mysql.connect(ip, "root", "zc142500", "testdb", timeout));
-//	TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb", timeout));
-//	*/
-//}
-
-//TEST_CASE(orm_create_table) {
-//	dbng<mysql> mysql;
-//	/*dbng<sqlite> sqlite;
-//	dbng<postgresql> postgres;
+//		 ----------------------------------header.html---------------------
+//		 <div>{{header_text}}</div>
 //*/
-//	TEST_REQUIRE(mysql.connect(ip, "root", "zc142500", "testdb"));
-//	//TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
-//	//TEST_REQUIRE(sqlite.connect("test.db"));
+//	});
 //
-//	ormpp_key key{ "id" };
-//	/*ormpp_not_null not_null{ {"id", "age"} };
-//	ormpp_auto_key auto_key{ "id" };
-//*/
-//	TEST_REQUIRE(mysql.create_datatable<person>());
-//	/*TEST_REQUIRE(postgres.create_datatable<person>());
-//	TEST_REQUIRE(sqlite.create_datatable<person>());*/
-//
-//	//TEST_REQUIRE(mysql.create_datatable<person>(key));
-//	/*TEST_REQUIRE(postgres.create_datatable<person>(key));
-//	TEST_REQUIRE(sqlite.create_datatable<person>(key));*/
-//
-//	//TEST_REQUIRE(mysql.create_datatable<person>(not_null));
-//	/*TEST_REQUIRE(postgres.create_datatable<person>(not_null));
-//	TEST_REQUIRE(sqlite.create_datatable<person>(not_null));*/
-//
-//	//TEST_REQUIRE(mysql.create_datatable<person>(key, not_null));
-//	//TEST_REQUIRE(postgres.create_datatable<person>(key, not_null));
-//	//TEST_REQUIRE(sqlite.create_datatable<person>(key, not_null));
-//
-//	//TEST_REQUIRE(mysql.create_datatable<person>(not_null, key));
-//	/*TEST_REQUIRE(postgres.create_datatable<person>(not_null, key));
-//	TEST_REQUIRE(sqlite.create_datatable<person>(not_null, key));
-//*/
-//	//TEST_REQUIRE(mysql.create_datatable<person>(auto_key));
-//	/*TEST_REQUIRE(postgres.create_datatable<person>(auto_key));
-//	TEST_REQUIRE(sqlite.create_datatable<person>(auto_key));
-//*/
-//	//TEST_REQUIRE(mysql.create_datatable<person>(auto_key, not_null));
-//	/*TEST_REQUIRE(postgres.create_datatable<person>(auto_key, not_null));
-//	TEST_REQUIRE(sqlite.create_datatable<person>(auto_key, not_null));
-//*/
-//	//TEST_REQUIRE(mysql.create_datatable<person>(not_null, auto_key));
-//	/*TEST_REQUIRE(postgres.create_datatable<person>(not_null, auto_key));
-//	TEST_REQUIRE(sqlite.create_datatable<person>(not_null, auto_key));*/
-//}
+	//server.set_http_handler<GET, POST>("/json", [](const request& req, response& res) {
+	//	inja::json json;
+	//	json["abc"] = "abc";
+	//	json["success"] = true;
+	//	json["number"] = 100.005;
+	//	json["name"] = "中文";
+	//	res.render_json(json);
+	//});
 
-TEST_CASE(orm_insert_query) {
-	dbng<mysql> mysql;
-	/*dbng<sqlite> sqlite;
-	dbng<postgresql> postgres;*/
+	//server.set_http_handler<GET, POST>("/pathinfo/*", [](const request& req, response& res) {
+	//	auto s = req.get_query_value(0);
+	//	res.set_status_and_content(status_type::ok, std::string(s.data(), s.length()));
+	//});
 
-	TEST_REQUIRE(mysql.connect(ip, "root", "zc142500", "testdb"));
-	/*TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
-	TEST_REQUIRE(sqlite.connect("test.db"));
-*/
-	/*auto vv0 = mysql.query(FID(simple::id), "<", "5");
-	auto vv = mysql.query(FID(simple::id), "<", 5);*/
-	auto vv3 = mysql.query(FID(person::name), "<", "5");
-	auto vv5 = mysql.query(FID(person::name), "<", 5);
-	/*auto r = mysql.delete_records(FID(simple::id), "=", 3);
-	auto vv1 = postgres.query(FID(simple::id), "<", "5");
-	auto vv2 = sqlite.query(FID(simple::id), "<", "5");
-*/
-	ormpp_key key{ "code" };
-	ormpp_not_null not_null{ {"code", "age"} };
-	ormpp_auto_key auto_key{ "code" };
+	//server.set_http_handler<GET, POST>("/restype", [](const request& req, response& res) {
+	//	auto type = req.get_query_value("type");
+	//	auto res_type = cinatra::res_content_type::string;
+	//	if (type == "html")
+	//	{
+	//		res_type = cinatra::res_content_type::html;
+	//	}
+	//	else if (type == "json") {
+	//		res_type = cinatra::res_content_type::json;
+	//	}
+	//	else if (type == "string") {
+	//		//do not anything;
+	//	}
+	//	res.set_status_and_content(status_type::ok, "<a href='http://www.baidu.com'>hello world 百度</a>", res_type);
+	//});
 
-	student s = { 5, "tom", 0, 19, 1.5, "room2" };
-	student s1 = { 6, "jack", 1, 20, 2.5, "room3" };
-	student s2 = { 8, "mke", 2, 21, 3.5, "room4" };
-	std::vector<student> v{ s1, s2 };
+	//server.set_http_handler<GET, POST>("/getzh", [](const request& req, response& res) {
+	//	auto zh = req.get_query_value("zh");
+	//	auto code_str = code_utils::get_string_by_urldecode(zh);
+	//	std::cout << code_str.c_str() << std::endl;
+	//	res.set_status_and_content(status_type::ok, code_str.c_str(), res_content_type::string);
+	//});
 
-	//auto key
-	{
-		TEST_REQUIRE(mysql.create_datatable<student>(auto_key, not_null));
-		/*TEST_REQUIRE(postgres.create_datatable<student>(auto_key, not_null));
-		TEST_REQUIRE(sqlite.create_datatable<student>(auto_key));
-*/
-		TEST_CHECK(mysql.insert(s) == 1);
-		auto result1 = mysql.query<student>();
-		TEST_CHECK(result1.size() == 1);
-		TEST_CHECK(mysql.insert(s) == 1);
+	//server.set_http_handler<GET, POST>("/gzip", [](const request& req, response& res) {
+	//	auto body = req.body();
+	//	std::cout << body.data() << std::endl;
 
-		//TEST_CHECK(postgres.insert(s) == 1);
-		//auto result2 = postgres.query<student>();
-		//TEST_CHECK(result2.size() == 1);
+	//	res.set_status_and_content(status_type::ok, "hello world", res_content_type::none, content_encoding::gzip);
+	//});
 
-		//TEST_CHECK(sqlite.insert(s) == 1);
-		//auto result3 = sqlite.query<student>();
-		//TEST_CHECK(result3.size() == 1);
+	//	server.set_static_res_handler<GET, POST>([](const request& req, response& res) {
+	//		auto res_path = req.get_res_path();
+	//		std::cout << res_path << std::endl;
+	//	});
 
-		TEST_CHECK(mysql.insert(v) == 2);
-		auto result4 = mysql.query<student>();
-		TEST_CHECK(result4.size() == 4);
+	server.set_http_handler<GET, POST>("/test", [](const request& req, response& res) {
+		auto name = req.get_header_value("name");
+		if (name.empty()) {
+			res.set_status_and_content(status_type::bad_request, "no name");
+			return;
+		}
 
-	/*	TEST_CHECK(postgres.insert(v) == 2);
-		auto result5 = mysql.query<student>();
-		TEST_CHECK(result5.size() == 4);
+		auto id = req.get_query_value("id");
+		if (id.empty()) {
+			res.set_status_and_content(status_type::bad_request);
+			return;
+		}
 
-		TEST_CHECK(sqlite.insert(v) == 2);
-		auto result6 = mysql.query<student>();
-		TEST_CHECK(result6.size() == 4);*/
-	}
+		res.set_status_and_content(status_type::ok, "hello world");
+	});
 
-	//key
-//	{
-//		TEST_REQUIRE(mysql.create_datatable<student>(key, not_null));
-//		/*TEST_REQUIRE(postgres.create_datatable<student>(key, not_null));
-//		TEST_REQUIRE(sqlite.create_datatable<student>(key));
-//*/
-//		v[0].code = 1;
-//		v[1].code = 2;
-//		TEST_CHECK(mysql.insert(s) == 1);
-//		auto result1 = mysql.query<student>();
-//		TEST_CHECK(result1.size() == 1);
-//		TEST_CHECK(mysql.insert(s) < 0);
-//
-//		/*TEST_CHECK(postgres.insert(s) == 1);
-//		auto result2 = postgres.query<student>();
-//		TEST_CHECK(result2.size() == 1);
-//
-//		TEST_CHECK(sqlite.insert(s) == 1);
-//		auto result3 = sqlite.query<student>();
-//		TEST_CHECK(result3.size() == 1);
-//*/
-//		TEST_CHECK(mysql.delete_records<student>());
-//		TEST_CHECK(mysql.insert(v) == 2);
-//		auto result4 = mysql.query<student>();
-//		TEST_CHECK(result4.size() == 2);
-//
-//		/*TEST_CHECK(postgres.delete_records<student>());
-//		TEST_CHECK(postgres.insert(v) == 2);
-//		auto result5 = mysql.query<student>();
-//		TEST_CHECK(result5.size() == 2);
-//
-//		TEST_CHECK(sqlite.delete_records<student>());
-//		TEST_CHECK(sqlite.insert(v) == 2);
-//		auto result6 = mysql.query<student>();
-//		TEST_CHECK(result6.size() == 2);*/
-//	}
+	////aspect
+	//server.set_http_handler<GET, POST>("/aspect", [](const request& req, response& res) {
+	//	res.set_status_and_content(status_type::ok, "hello world");
+	//}, check{}, log_t{});
 
+	////web socket
+	//server.set_http_handler<GET, POST>("/ws", [](const request& req, response& res) {
+	//	assert(req.get_content_type() == content_type::websocket);
+	//	auto state = req.get_state();
+	//	switch (state)
+	//	{
+	//	case cinatra::data_proc_state::data_begin:
+	//	{
+	//		std::cout << "websocket start" << std::endl;
+	//	}
+	//	break;
+	//	case cinatra::data_proc_state::data_continue:
+	//	{
+	//		auto part_data = req.get_part_data();
+	//		//echo
+	//		std::string str = std::string(part_data.data(), part_data.length());
+	//		req.get_conn()->send_ws_msg(std::move(str), opcode::text);
+	//		std::cout << part_data.data() << std::endl;
+	//	}
+	//	break;
+	//	case cinatra::data_proc_state::data_close:
+	//	{
+	//		std::cout << "websocket close" << std::endl;
+	//	}
+	//	break;
+	//	case cinatra::data_proc_state::data_error:
+	//	{
+	//		std::cout << "network error" << std::endl;
+	//	}
+	//	break;
+	//	}
+	//});
+
+	//std::atomic_int n = 0;
+
+	////http upload(multipart) for small file
+	//server.set_http_handler<GET, POST>("/upload_small_file", [&n](const request& req, response& res) {
+	//	assert(req.get_content_type() == content_type::multipart);
+	//	auto& files = req.get_upload_files();
+	//	for (auto& file : files) {
+	//		std::cout << file.get_file_path() << " " << file.get_file_size() << std::endl;
+	//	}
+	//	res.set_status_and_content(status_type::ok, files[0].get_file_path());
+	//});
+
+	////http upload(multipart) for big file
+	//server.set_http_handler<GET, POST>("/upload_multipart", [&n](const request& req, response& res) {
+	//	assert(req.get_content_type() == content_type::multipart);
+	//	auto state = req.get_state();
+	//	switch (state)
+	//	{
+	//	case cinatra::data_proc_state::data_begin:
+	//	{
+	//		auto file_name_s = req.get_multipart_file_name();
+	//		auto extension = get_extension(file_name_s);
+	//		if (file_name_s.empty()) {
+	//			res.set_continue(false);
+	//			return;
+	//		}
+	//		else {
+	//			res.set_continue(true);
+	//		}
+
+	//		std::string file_name = std::to_string(n++) + std::string(extension.data(), extension.length());
+	//		auto file = std::make_shared<std::ofstream>(file_name, std::ios::binary);
+	//		if (!file->is_open()) {
+	//			res.set_continue(false);
+	//			return;
+	//		}
+	//		else {
+	//			res.set_continue(true);
+	//		}
+	//		req.get_conn()->set_tag(file);
+	//	}
+	//	break;
+	//	case cinatra::data_proc_state::data_continue:
+	//	{
+	//		if (!res.need_continue()) {
+	//			return;
+	//		}
+
+	//		auto file = std::any_cast<std::shared_ptr<std::ofstream>>(req.get_conn()->get_tag());
+	//		auto part_data = req.get_part_data();
+	//		file->write(part_data.data(), part_data.length());
+	//	}
+	//	break;
+	//	case cinatra::data_proc_state::data_end:
+	//	{
+	//		std::cout << "one file finished" << std::endl;
+	//	}
+	//	break;
+	//	case cinatra::data_proc_state::data_all_end:
+	//	{
+	//		//all the upstream end
+	//		std::cout << "all files finished" << std::endl;
+	//		res.set_status_and_content(status_type::ok);
+	//	}
+	//	break;
+	//	case cinatra::data_proc_state::data_error:
+	//	{
+	//		//network error
+	//	}
+	//	break;
+	//	}
+	//});
+
+	////http upload(octet-stream)
+	//server.set_http_handler<GET, POST>("/upload_octet_stream", [&n](const request& req, response& res) {
+	//	assert(req.get_content_type() == content_type::octet_stream);
+	//	auto state = req.get_state();
+	//	switch (state)
+	//	{
+	//	case cinatra::data_proc_state::data_begin:
+	//	{
+	//		std::string file_name = std::to_string(n++);;
+	//		auto file = std::make_shared<std::ofstream>(file_name, std::ios::binary);
+	//		if (!file->is_open()) {
+	//			res.set_continue(false);
+	//			return;
+	//		}
+	//		req.get_conn()->set_tag(file);
+	//	}
+	//	break;
+	//	case cinatra::data_proc_state::data_continue:
+	//	{
+	//		if (!res.need_continue()) {
+	//			return;
+	//		}
+
+	//		auto file = std::any_cast<std::shared_ptr<std::ofstream>>(req.get_conn()->get_tag());
+	//		auto part_data = req.get_part_data();
+	//		file->write(part_data.data(), part_data.length());
+	//	}
+	//	break;
+	//	case cinatra::data_proc_state::data_end:
+	//	{
+	//		std::cout << "one file finished" << std::endl;
+	//	}
+	//	break;
+	//	case cinatra::data_proc_state::data_error:
+	//	{
+	//		//network error
+	//	}
+	//	break;
+	//	}
+	//});
+
+	////http download(chunked)
+	//server.set_http_handler<GET, POST>("/download_chunked", [](const request& req, response& res) {
+	//	auto state = req.get_state();
+	//	switch (state)
+	//	{
+	//	case cinatra::data_proc_state::data_begin:
+	//	{
+	//		std::string filename = "3.jpg";
+	//		auto in = std::make_shared<std::ifstream>(filename, std::ios::binary);
+	//		if (!in->is_open()) {
+	//			req.get_conn()->on_close();
+	//			return;
+	//		}
+
+	//		auto conn = req.get_conn();
+	//		conn->set_tag(in);
+	//		auto extension = get_extension(filename.data());
+	//		auto mime = get_mime_type(extension);
+	//		conn->write_chunked_header(mime);
+	//	}
+	//	break;
+	//	case cinatra::data_proc_state::data_continue:
+	//	{
+	//		auto conn = req.get_conn();
+	//		auto in = std::any_cast<std::shared_ptr<std::ifstream>>(conn->get_tag());
+
+	//		std::string str;
+	//		const size_t len = 2 * 1024;
+	//		str.resize(len);
+
+	//		in->read(&str[0], len);
+	//		size_t read_len = (size_t)in->gcount();
+	//		if (read_len != len) {
+	//			str.resize(read_len);
+	//		}
+	//		bool eof = (read_len == 0 || read_len != len);
+	//		conn->write_chunked_data(std::move(str), eof);
+	//	}
+	//	break;
+	//	case cinatra::data_proc_state::data_end:
+	//	{
+	//		std::cout << "chunked send finish" << std::endl;
+	//		auto conn = req.get_conn();
+	//		conn->on_close();
+	//	}
+	//	break;
+	//	case cinatra::data_proc_state::data_error:
+	//	{
+	//		//network error
+	//	}
+	//	break;
+	//	}
+	//});
+
+	server.run();
+	return 0;
 }
-
-//TEST_CASE(orm_update) {
-//	dbng<mysql> mysql;
-//	/*dbng<sqlite> sqlite;
-//	dbng<postgresql> postgres;*/
-//
-//	TEST_REQUIRE(mysql.connect(ip, "root", "12345", "testdb"));
-//	/*TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
-//	TEST_REQUIRE(sqlite.connect("test.db"));
-//*/
-//	ormpp_key key{ "code" };
-//	ormpp_not_null not_null{ {"code", "age"} };
-//	ormpp_auto_key auto_key{ "code" };
-//
-//	student s = { 1, "tom", 0, 19, 1.5, "room2" };
-//	student s1 = { 2, "jack", 1, 20, 2.5, "room3" };
-//	student s2 = { 3, "mke", 2, 21, 3.5, "room4" };
-//	std::vector<student> v{ s, s1, s2 };
-//
-//	TEST_REQUIRE(mysql.create_datatable<student>(key, not_null));
-//	/*TEST_REQUIRE(postgres.create_datatable<student>(key, not_null));
-//	TEST_REQUIRE(sqlite.create_datatable<student>(key));
-//*/
-//	TEST_CHECK(mysql.insert(v) == 3);
-//	/*TEST_CHECK(postgres.insert(v) == 3);
-//	TEST_CHECK(sqlite.insert(v) == 3);
-//*/
-//	v[0].name = "test1";
-//	v[1].name = "test2";
-//
-//	TEST_CHECK(mysql.update(v[0]) == 1);
-//	auto result = mysql.query<student>();
-//	TEST_CHECK(mysql.update(v[1]) == 1);
-//	auto result1 = mysql.query<student>();
-//
-//	/*TEST_CHECK(postgres.update(v[0]) == 1);
-//	auto result2 = postgres.query<student>();
-//	TEST_CHECK(postgres.update(v[1]) == 1);
-//	auto result3 = postgres.query<student>();
-//
-//	TEST_CHECK(sqlite.update(v[0]) == 1);
-//	auto result4 = sqlite.query<student>();
-//	TEST_CHECK(sqlite.update(v[1]) == 1);
-//	auto result5 = sqlite.query<student>();*/
-//}
-//
-//TEST_CASE(orm_multi_update) {
-//	dbng<mysql> mysql;
-//	/*dbng<sqlite> sqlite;
-//	dbng<postgresql> postgres;
-//*/
-//	TEST_REQUIRE(mysql.connect(ip, "root", "12345", "testdb"));
-//	/*TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
-//	TEST_REQUIRE(sqlite.connect("test.db"));
-//*/
-//	ormpp_key key{ "code" };
-//	ormpp_not_null not_null{ {"code", "age"} };
-//	ormpp_auto_key auto_key{ "code" };
-//
-//	student s = { 1, "tom", 0, 19, 1.5, "room2" };
-//	student s1 = { 2, "jack", 1, 20, 2.5, "room3" };
-//	student s2 = { 3, "mike", 2, 21, 3.5, "room4" };
-//	std::vector<student> v{ s, s1, s2 };
-//
-//	TEST_REQUIRE(mysql.create_datatable<student>(key, not_null));
-//	/*TEST_REQUIRE(postgres.create_datatable<student>(key, not_null));
-//	TEST_REQUIRE(sqlite.create_datatable<student>(key));
-//*/
-//	TEST_CHECK(mysql.insert(v) == 3);
-//	/*TEST_CHECK(postgres.insert(v) == 3);
-//	TEST_CHECK(sqlite.insert(v) == 3);
-//*/
-//	v[0].name = "test1";
-//	v[1].name = "test2";
-//	v[2].name = "test3";
-//
-//	TEST_CHECK(mysql.update(v) == 3);
-//	auto result = mysql.query<student>();
-//	TEST_CHECK(result.size() == 3);
-//
-//	/*TEST_CHECK(postgres.update(v) == 3);
-//	auto result2 = postgres.query<student>();
-//	TEST_CHECK(result2.size() == 3);
-//
-//	TEST_CHECK(sqlite.update(v) == 3);
-//	auto result4 = sqlite.query<student>();
-//	TEST_CHECK(result4.size() == 3);*/
-//}
-//
-//TEST_CASE(orm_delete) {
-//	dbng<mysql> mysql;
-//	/*dbng<sqlite> sqlite;
-//	dbng<postgresql> postgres;*/
-//
-//	TEST_REQUIRE(mysql.connect(ip, "root", "12345", "testdb"));
-//	/*TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
-//	TEST_REQUIRE(sqlite.connect("test.db"));
-//*/
-//	ormpp_key key{ "code" };
-//	ormpp_not_null not_null{ {"code", "age"} };
-//	ormpp_auto_key auto_key{ "code" };
-//
-//	student s = { 1, "tom", 0, 19, 1.5, "room2" };
-//	student s1 = { 2, "jack", 1, 20, 2.5, "room3" };
-//	student s2 = { 3, "mike", 2, 21, 3.5, "room4" };
-//	std::vector<student> v{ s, s1, s2 };
-//
-//	TEST_REQUIRE(mysql.create_datatable<student>(key, not_null));
-//	/*TEST_REQUIRE(postgres.create_datatable<student>(key, not_null));
-//	TEST_REQUIRE(sqlite.create_datatable<student>(key));
-//*/
-//	TEST_CHECK(mysql.insert(v) == 3);
-//	/*TEST_CHECK(postgres.insert(v) == 3);
-//	TEST_CHECK(sqlite.insert(v) == 3);
-//*/
-//	TEST_REQUIRE(mysql.delete_records<student>("code=1"));
-//	TEST_CHECK(mysql.query<student>().size() == 2);
-//	TEST_REQUIRE(mysql.delete_records<student>(""));
-//	auto result = mysql.query<student>();
-//	TEST_CHECK(result.size() == 0);
-//
-//	/*TEST_REQUIRE(postgres.delete_records<student>("code=1"));
-//	TEST_CHECK(postgres.query<student>().size() == 2);
-//	TEST_REQUIRE(postgres.delete_records<student>(""));
-//	auto result1 = postgres.query<student>();
-//	TEST_CHECK(result1.size() == 0);
-//
-//	TEST_REQUIRE(sqlite.delete_records<student>("code=1"));
-//	TEST_CHECK(sqlite.query<student>().size() == 2);
-//	TEST_REQUIRE(sqlite.delete_records<student>(""));
-//	auto result2 = sqlite.query<student>();
-//	TEST_CHECK(result2.size() == 0);*/
-//}
-//
-//TEST_CASE(orm_query) {
-//	dbng<mysql> mysql;
-//	/*dbng<sqlite> sqlite;
-//	dbng<postgresql> postgres;*/
-//
-//	TEST_REQUIRE(mysql.connect(ip, "root", "12345", "testdb"));
-//	/*TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
-//	TEST_REQUIRE(sqlite.connect("test.db"));*/
-//
-//	ormpp_key key{ "id" };
-//
-//	simple s1 = { 1, 2.5, 3 };
-//	simple s2 = { 2, 3.5, 4 };
-//	simple s3 = { 3, 4.5, 5 };
-//	std::vector<simple> v{ s1, s2, s3 };
-//	TEST_REQUIRE(mysql.create_datatable<simple>(key));
-//	/*TEST_REQUIRE(postgres.create_datatable<simple>(key));
-//	TEST_REQUIRE(sqlite.create_datatable<simple>(key));*/
-//
-//	TEST_CHECK(mysql.insert(v) == 3);
-//	/*TEST_CHECK(postgres.insert(v) == 3);
-//	TEST_CHECK(sqlite.insert(v) == 3);
-//*/
-//	auto result = mysql.query<simple>();
-//	TEST_CHECK(result.size() == 3);
-//
-//	/*auto result1 = postgres.query<simple>();
-//	TEST_CHECK(result1.size() == 3);
-//
-//	auto result2 = sqlite.query<simple>();
-//	TEST_CHECK(result2.size() == 3);
-//*/
-//	auto result3 = mysql.query<simple>("id=1");
-//	TEST_CHECK(result3.size() == 1);
-//
-//	/*auto result4 = postgres.query<simple>("id=2");
-//	TEST_CHECK(result4.size() == 1);
-//
-//	auto result5 = sqlite.query<simple>("id=3");
-//	TEST_CHECK(result5.size() == 1);*/
-//}
-//
-//TEST_CASE(orm_query_some) {
-//	dbng<mysql> mysql;
-//	/*dbng<sqlite> sqlite;
-//	dbng<postgresql> postgres;*/
-//
-//	TEST_REQUIRE(mysql.connect(ip, "root", "12345", "testdb"));
-//	/*TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
-//	TEST_REQUIRE(sqlite.connect("test.db"));
-//*/
-//	ormpp_key key{ "code" };
-//	ormpp_not_null not_null{ {"code", "age"} };
-//	ormpp_auto_key auto_key{ "code" };
-//
-//	student s = { 1, "tom", 0, 19, 1.5, "room2" };
-//	student s1 = { 2, "jack", 1, 20, 2.5, "room3" };
-//	student s2 = { 3, "mike", 2, 21, 3.5, "room4" };
-//	std::vector<student> v{ s, s1, s2 };
-//
-//	TEST_REQUIRE(mysql.create_datatable<student>(key, not_null));
-//	/*TEST_REQUIRE(postgres.create_datatable<student>(key, not_null));
-//	TEST_REQUIRE(sqlite.create_datatable<student>(key));
-//*/
-//	TEST_CHECK(mysql.insert(v) == 3);
-//	/*TEST_CHECK(postgres.insert(v) == 3);
-//	TEST_CHECK(sqlite.insert(v) == 3);
-//*/
-//	auto result = mysql.query<std::tuple<int, std::string, double>>("select code, name, dm from student");
-//	TEST_CHECK(result.size() == 3);
-//
-//	/*auto result1 = postgres.query<std::tuple<int, std::string, double>>("select code, name, dm from student");
-//	TEST_CHECK(result1.size() == 3);
-//
-//	auto result2 = sqlite.query<std::tuple<int, std::string, double>>("select code, name, dm from student");
-//	TEST_CHECK(result2.size() == 3);
-//*/
-//	auto result3 = mysql.query<std::tuple<int>>("select count(1) from student");
-//	TEST_CHECK(result3.size() == 1);
-//	TEST_CHECK(std::get<0>(result3[0]) == 3);
-//
-//	auto result4 = mysql.query<std::tuple<int>>("select count(1) from student");
-//	TEST_CHECK(result4.size() == 1);
-//	TEST_CHECK(std::get<0>(result4[0]) == 3);
-//
-//	auto result5 = mysql.query<std::tuple<int>>("select count(1) from student");
-//	TEST_CHECK(result5.size() == 1);
-//	TEST_CHECK(std::get<0>(result5[0]) == 3);
-//}
-//
-//TEST_CASE(orm_query_multi_table) {
-//	dbng<mysql> mysql;
-//	/*dbng<sqlite> sqlite;
-//	dbng<postgresql> postgres;
-//*/
-//	TEST_REQUIRE(mysql.connect(ip, "root", "12345", "testdb"));
-//	//TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
-//	//TEST_REQUIRE(sqlite.connect("test.db"));
-//
-//	ormpp_key key{ "code" };
-//	ormpp_not_null not_null{ {"code", "age"} };
-//	ormpp_auto_key auto_key{ "code" };
-//
-//	student s = { 1, "tom", 0, 19, 1.5, "room2" };
-//	student s1 = { 2, "jack", 1, 20, 2.5, "room3" };
-//	student s2 = { 3, "mike", 2, 21, 3.5, "room4" };
-//	std::vector<student> v{ s, s1, s2 };
-//
-//	TEST_REQUIRE(mysql.create_datatable<student>(key, not_null));
-//	/*TEST_REQUIRE(postgres.create_datatable<student>(key, not_null));
-//	TEST_REQUIRE(sqlite.create_datatable<student>(key));
-//*/
-//	TEST_CHECK(mysql.insert(v) == 3);
-//	/*TEST_CHECK(postgres.insert(v) == 3);
-//	TEST_CHECK(sqlite.insert(v) == 3);*/
-//
-//	ormpp_key key1{ "id" };
-//	person p = { 1, "test1", 2 };
-//	person p1 = { 2, "test2", 3 };
-//	person p2 = { 3, "test3", 4 };
-//	std::vector<person> v1{ p, p1, p2 };
-//	TEST_REQUIRE(mysql.create_datatable<person>(key1, not_null));
-//	/*TEST_REQUIRE(postgres.create_datatable<person>(key1, not_null));
-//	TEST_REQUIRE(sqlite.create_datatable<person>(key1));
-//*/
-//	TEST_CHECK(mysql.insert(v1) == 3);
-//	/*TEST_CHECK(postgres.insert(v1) == 3);
-//	TEST_CHECK(sqlite.insert(v1) == 3);
-//*/
-//	auto result = mysql.query<std::tuple<person, std::string, int>>("select person.*, student.name, student.age from person, student");
-//	TEST_CHECK(result.size() == 9);
-//
-//	/*auto result1 = postgres.query<std::tuple<int, std::string, double>>("select person.*, student.name, student.age from person, student"s);
-//	TEST_CHECK(result1.size() == 9);
-//
-//	auto result2 = sqlite.query<std::tuple<int, std::string, double>>("select person.*, student.name, student.age from person, student"s);
-//	TEST_CHECK(result2.size() == 9);
-//*/
-//	auto result3 = mysql.query<std::tuple<person, student>>("select * from person, student");
-//	TEST_CHECK(result.size() == 9);
-//
-//	/*auto result4 = postgres.query<std::tuple<person, student>>("select * from person, student"s);
-//	TEST_CHECK(result1.size() == 9);
-//
-//	auto result5 = sqlite.query<std::tuple<person, student>>("select * from person, student"s);
-//	TEST_CHECK(result2.size() == 9);*/
-//}
-//
-//TEST_CASE(orm_transaction) {
-//	dbng<mysql> mysql;
-//	/*dbng<sqlite> sqlite;
-//	dbng<postgresql> postgres;*/
-//
-//	TEST_REQUIRE(mysql.connect(ip, "root", "12345", "testdb"));
-//	/*TEST_REQUIRE(postgres.connect(ip, "root", "12345", "testdb"));
-//	TEST_REQUIRE(sqlite.connect("test.db"));*/
-//
-//	ormpp_key key{ "code" };
-//	ormpp_not_null not_null{ {"code", "age"} };
-//	ormpp_auto_key auto_key{ "code" };
-//
-//	student s = { 1, "tom", 0, 19, 1.5, "room2" };
-//	student s1 = { 2, "jack", 1, 20, 2.5, "room3" };
-//	student s2 = { 3, "mike", 2, 21, 3.5, "room4" };
-//	std::vector<student> v{ s, s1, s2 };
-//
-//	TEST_REQUIRE(mysql.create_datatable<student>(key, not_null));
-//	/*TEST_REQUIRE(postgres.create_datatable<student>(key, not_null));
-//	TEST_REQUIRE(sqlite.create_datatable<student>(key));*/
-//
-//	TEST_REQUIRE(mysql.begin());
-//	for (int i = 0; i < 10; ++i) {
-//		student s = { i, "tom", 0, 19, 1.5, "room2" };
-//		if (!mysql.insert(s)) {
-//			mysql.rollback();
-//			return;
-//		}
-//	}
-//	TEST_REQUIRE(mysql.commit());
-//	auto result = mysql.query<student>();
-//	TEST_CHECK(result.size() == 10);
-//
-//	/*TEST_REQUIRE(postgres.begin());
-//	for (int i = 0; i < 10; ++i) {
-//		student s = { i, "tom", 0, 19, 1.5, "room2" };
-//		if (!postgres.insert(s)) {
-//			postgres.rollback();
-//			return;
-//		}
-//	}
-//	TEST_REQUIRE(postgres.commit());
-//	auto result1 = postgres.query<student>();
-//	TEST_CHECK(result1.size() == 10);
-//
-//	TEST_REQUIRE(sqlite.begin());
-//	for (int i = 0; i < 10; ++i) {
-//		student s = { i, "tom", 0, 19, 1.5, "room2" };
-//		if (!sqlite.insert(s)) {
-//			sqlite.rollback();
-//			return;
-//		}
-//	}
-//	TEST_REQUIRE(sqlite.commit());
-//	auto result2 = sqlite.query<student>();
-//	TEST_CHECK(result2.size() == 10);*/
-//}
-
-struct log {
-	template<typename... Args>
-	bool before(Args... args) {
-		std::cout << "log before" << std::endl;
-		return true;
-	}
-
-	template<typename T, typename... Args>
-	bool after(T t, Args... args) {
-		std::cout << "log after" << std::endl;
-		return true;
-	}
-};
-
-struct validate {
-	template<typename... Args>
-	bool before(Args... args) {
-		std::cout << "validate before" << std::endl;
-		return true;
-	}
-
-	template<typename T, typename... Args>
-	bool after(T t, Args... args) {
-		std::cout << "validate after" << std::endl;
-		return true;
-	}
-};
-
-//TEST_CASE(orm_aop) {
-//	//dbng<mysql> mysql;
-//	//auto r = mysql.wraper_connect<log, validate>("127.0.0.1", "root", "12345", "testdb");
-//	//TEST_REQUIRE(r);
-//
-//	//r = mysql.wraper_execute("drop table if exists person");
-//	//TEST_REQUIRE(r);
-//
-//	//r = mysql.wraper_execute<log>("drop table if exists person");
-//	//TEST_REQUIRE(r);
-//
-//	//r = mysql.wraper_execute<validate>("drop table if exists person");
-//	//TEST_REQUIRE(r);
-//
-//	//r = mysql.wraper_execute<validate, log>("drop table if exists person");
-//	//TEST_REQUIRE(r);
-//}
