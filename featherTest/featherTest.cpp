@@ -52,9 +52,9 @@ int main() {
 		return -1;
 	}
 
-	server.set_http_handler<GET, POST>("/", [](const request& req, response& res) {
+	/*server.set_http_handler<GET, POST>("/", [](const request& req, response& res) {
 		res.set_status_and_content(status_type::ok, "hello world");
-	});
+	});*/
 
 //	server.set_http_handler<GET, POST>("/login", [](const request& req, response& res) {
 //		auto session = res.start_session();
@@ -73,28 +73,19 @@ int main() {
 //		res.set_status_and_content(status_type::ok, "已经登录", res_content_type::string);
 //	});
 //
-//	server.set_http_handler<GET, POST>("/html", [](const request& req, response& res) {
-//		inja::json json;
-//		json["test_text"] = "hello,world";
-//		json["header_text"] = "你好 cinatra";
-//		res.render_html("./www/test.html", json);
-//		/*
-//		 * ---------------------test.html---------------------------
-//		 * <html>
-//	<head>
-//	  <meta charset="utf-8">
-//	</head>
-//	<body>
-//		{% include "./header/header.html" %}
-//			<h1>{{test_text}}</h1>
-//	</body>
-//</html>
-//
-//		 ----------------------------------header.html---------------------
-//		 <div>{{header_text}}</div>
-//*/
-//	});
-//
+	server.set_http_handler<GET, POST>("/html", [](const request& req, response& res) {
+		inja::json json;
+		json["test_text"] = "hello,world";
+		json["header_text"] = "你好 cinatra";
+		res.render_html("./www/test.html", json);
+		
+
+
+		 
+		 
+
+	});
+
 	//server.set_http_handler<GET, POST>("/json", [](const request& req, response& res) {
 	//	inja::json json;
 	//	json["abc"] = "abc";
