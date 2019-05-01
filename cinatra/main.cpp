@@ -76,7 +76,7 @@ int main() {
 		inja::json json;
 		json["test_text"] = "hello,world";
 		json["header_text"] = "你好 cinatra";
-		res.render_html("./www/test.html", json);
+		res.render_html("../www/test.html", json);
 		/*
 		 * ---------------------test.html---------------------------
 		 * <html>

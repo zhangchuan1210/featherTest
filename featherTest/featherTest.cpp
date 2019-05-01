@@ -56,34 +56,30 @@ int main() {
 		res.set_status_and_content(status_type::ok, "hello world");
 	});*/
 
-//	server.set_http_handler<GET, POST>("/login", [](const request& req, response& res) {
-//		auto session = res.start_session();
-//		session->set_data("userid", std::string("1"));
-//		session->set_max_age(-1);
-//		res.set_status_and_content(status_type::ok, "login");
-//	});
+	/*server.set_http_handler<GET, POST>("/login", [](const request& req, response& res) {
+		auto session = res.start_session();
+		session->set_data("userid", std::string("1"));
+		session->set_max_age(-1);
+		res.set_status_and_content(status_type::ok, "login");
+	});*/
 //
-//	server.set_http_handler<GET, POST>("/islogin", [](const request& req, response& res) {
-//		auto ptr = req.get_session();
-//		auto session = ptr.lock();
-//		if (session == nullptr || session->get_data<std::string>("userid") != "1") {
-//			res.set_status_and_content(status_type::ok, "没有登录", res_content_type::string);
-//			return;
-//		}
-//		res.set_status_and_content(status_type::ok, "已经登录", res_content_type::string);
-//	});
+	/*server.set_http_handler<GET, POST>("/islogin", [](const request& req, response& res) {
+		auto ptr = req.get_session();
+		auto session = ptr.lock();
+		if (session == nullptr || session->get_data<std::string>("userid") != "1") {
+			res.set_status_and_content(status_type::ok, "没有登录", res_content_type::string);
+			return;
+		}
+		res.set_status_and_content(status_type::ok, "已经登录", res_content_type::string);
+	});*/
 //
 	server.set_http_handler<GET, POST>("/html", [](const request& req, response& res) {
 		inja::json json;
 		json["test_text"] = "hello,world";
 		json["header_text"] = "你好 cinatra";
-		res.render_html("./www/test.html", json);
-		
 
-
-		 
-		 
-
+		res.render_html("../www/test.html", json);
+		//res.render_html("./www/index.html", json);
 	});
 
 	//server.set_http_handler<GET, POST>("/json", [](const request& req, response& res) {
@@ -135,7 +131,7 @@ int main() {
 	//		std::cout << res_path << std::endl;
 	//	});
 
-	server.set_http_handler<GET, POST>("/test", [](const request& req, response& res) {
+	/*server.set_http_handler<GET, POST>("/test", [](const request& req, response& res) {
 		auto name = req.get_header_value("name");
 		if (name.empty()) {
 			res.set_status_and_content(status_type::bad_request, "no name");
@@ -149,7 +145,7 @@ int main() {
 		}
 
 		res.set_status_and_content(status_type::ok, "hello world");
-	});
+	});*/
 
 	////aspect
 	//server.set_http_handler<GET, POST>("/aspect", [](const request& req, response& res) {
