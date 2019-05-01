@@ -52,7 +52,7 @@ namespace ormpp{
     }
 
     template<typename... Args>
-    inline auto sort_tuple(const std::tuple<Args...>& tp){
+    auto sort_tuple(const std::tuple<Args...>& tp){
         if constexpr(sizeof...(Args)==2){
             auto [a, b] = tp;
             if constexpr(!std::is_same_v<decltype(a), ormpp_key>&&!std::is_same_v<decltype(a), ormpp_auto_key>)
@@ -82,10 +82,10 @@ namespace ormpp{
             switch (type){
                 case DBType::mysql : s = ormpp_mysql::type_to_name(identity<U>{});
                     break;
-				case DBType::sqlite : s = ormpp_sqlite::type_to_name(identity<U>{});
+				/*case DBType::sqlite : s = ormpp_sqlite::type_to_name(identity<U>{});
                     break;
                 case DBType::postgresql : s = ormpp_postgresql::type_to_name(identity<U>{});
-                    break;
+                    break;*/
             }
 
             arr[Idx] = s;
@@ -147,7 +147,7 @@ namespace ormpp{
     }
 
 //    template <typename T>
-    inline bool is_empty(const std::string& t){
+    bool is_empty(const std::string& t){
         return t.empty();
     }
 

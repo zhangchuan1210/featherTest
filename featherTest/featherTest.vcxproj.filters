@@ -18,30 +18,6 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="connection_pool.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="dbng.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="mysql.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ormpp_cfg.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="unit_test.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="utility.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="entity.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="type_mapping.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\iguana\iguana\reflection.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -139,6 +115,33 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\cinatra\ws_define.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ormpp\connection_pool.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ormpp\dbng.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ormpp\entity.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ormpp\mysql.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ormpp\ormpp_cfg.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ormpp\pg_types.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ormpp\type_mapping.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ormpp\unit_test.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ormpp\utility.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

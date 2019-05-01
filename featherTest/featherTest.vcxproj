@@ -200,15 +200,16 @@
     <ClInclude Include="..\cinatra\ws_define.h" />
     <ClInclude Include="..\iguana\iguana\json.hpp" />
     <ClInclude Include="..\iguana\iguana\reflection.hpp" />
-    <ClInclude Include="connection_pool.hpp" />
-    <ClInclude Include="dbng.hpp" />
-    <ClInclude Include="entity.hpp" />
-    <ClInclude Include="mysql.hpp" />
-    <ClInclude Include="ormpp_cfg.hpp" />
+    <ClInclude Include="..\ormpp\connection_pool.hpp" />
+    <ClInclude Include="..\ormpp\dbng.hpp" />
+    <ClInclude Include="..\ormpp\entity.hpp" />
+    <ClInclude Include="..\ormpp\mysql.hpp" />
+    <ClInclude Include="..\ormpp\ormpp_cfg.hpp" />
+    <ClInclude Include="..\ormpp\pg_types.h" />
+    <ClInclude Include="..\ormpp\type_mapping.hpp" />
+    <ClInclude Include="..\ormpp\unit_test.hpp" />
+    <ClInclude Include="..\ormpp\utility.hpp" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="type_mapping.hpp" />
-    <ClInclude Include="unit_test.hpp" />
-    <ClInclude Include="utility.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="featherTest.cpp" />

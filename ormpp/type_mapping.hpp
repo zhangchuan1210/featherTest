@@ -1,12 +1,13 @@
 //
 // Created by qiyu on 10/23/17.
 //
-#ifdef _MSC_VER
-#include <include/mysql.h>
-#else
-#include <mysql/mysql.h>
-#endif
-
+//#ifdef _MSC_VER
+//#include <include/mysql.h>
+//#else
+//#include <mysql/mysql.h>
+//#endif
+//#include <sqlite3.h>
+#include"mysql.h"
 #include <string>
 #include <string_view>
 #include "pg_types.h"
@@ -49,7 +50,7 @@ namespace ormpp{
 		}
     }
 
-    namespace ormpp_sqlite{
+  /*  namespace ormpp_sqlite{
         REGISTER_TYPE( int     , SQLITE_INTEGER     )
         REGISTER_TYPE( double  , SQLITE_FLOAT   )
 
@@ -94,7 +95,7 @@ namespace ormpp{
 			std::string s = "varchar(" + std::to_string(N)+")";
 			return s;
 		}
-    }
+    }*/
 }
 
 #endif //EXAMPLE1_TYPE_MAPPING_HPP
